@@ -96,6 +96,9 @@
 			children = (
 				0F512D5B2B69AA7300321C1E /* ChimpTestApp.swift */,
 				0F512D5D2B69AA7300321C1E /* ContentView.swift */,
+				8267730B2B6C37BB004CB78A /* Model */,
+				8267730C2B6C37C1004CB78A /* View */,
+				8267730D2B6C37C5004CB78A /* ViewModel */,
 				0F512D5F2B69AA7400321C1E /* Assets.xcassets */,
 				0F512D612B69AA7400321C1E /* Preview Content */,
 			);
@@ -125,6 +128,27 @@
 				0F512D782B69AA7400321C1E /* ChimpTestUITestsLaunchTests.swift */,
 			);
 			path = ChimpTestUITests;
+			sourceTree = "<group>";
+		};
+		8267730B2B6C37BB004CB78A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8267730C2B6C37C1004CB78A /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8267730D2B6C37C5004CB78A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
