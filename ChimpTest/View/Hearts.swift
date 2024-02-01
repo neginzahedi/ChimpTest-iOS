@@ -9,15 +9,16 @@ import SwiftUI
 
 struct Hearts: View {
     
-    var heartsNumber: Int
+    var livesLeft: Int
+    let maxLives: Int = 3
     
     var body: some View {
         VStack(alignment: .center,spacing: 15){
             Text("Lives")
                 .bold()
             HStack{
-                ForEach(0..<3) { index in
-                    Image(systemName: index < self.heartsNumber ? "heart.fill" : "heart")
+                ForEach(0..<maxLives, id: \.self) { index in
+                    Image(systemName: index < self.livesLeft ? "heart.fill" : "heart")
                         .foregroundColor(.red)
                 }
             }
@@ -25,6 +26,10 @@ struct Hearts: View {
     }
 }
 
+#if DEBUG
+import SwiftUI
+
 #Preview {
-    Hearts(heartsNumber: 3)
+    Hearts(livesLeft: 2)
 }
+#endif
