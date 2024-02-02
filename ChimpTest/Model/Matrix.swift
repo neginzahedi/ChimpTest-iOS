@@ -7,13 +7,13 @@
 
 import Foundation
 
+// MARK: - Error Enum
 enum MatrixError: Error {
     case outOfBounds;
 }
 
 
-class Matrix<T: CVarArg> {
-
+class Matrix<T> {
     // MARK: - Properties
     private var array: Array<Array<T>>;
     private(set) var rows: Int;
@@ -57,12 +57,15 @@ class Matrix<T: CVarArg> {
         self.array[i][j]
     }
     
-    func display(){
-        for row in self.array {
-            for element in row {
-                print(String(format: "%4d", element), terminator: " ")
+    func dimensions() -> Pair<Int, Int> {
+        .init(self.rows, self.cols)
+    }
+    
+    func loop(_ fn: (T, Int, Int) -> Void) {
+        for i in 0..<self.rows {
+            for j in 0..<self.cols {
+                fn(self.at(i, j), i, j)
             }
-            print()
         }
     }
 }
