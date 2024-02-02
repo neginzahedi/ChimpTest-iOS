@@ -3,7 +3,7 @@ name: Run Tests
 on:
   push:
     branches:
-      - main  # Change this to the main branch of your repository
+      - main
 
 jobs:
   test:
@@ -13,9 +13,9 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Set up Xcode
-      uses: actions/setup-xcode@v2
+      uses: apple/setup-xcode@v2  # Corrected repository name
       with:
-        xcode-version: '13'  # Change this to the desired Xcode version
+        xcode-version: '15'
 
     - name: Install dependencies
       run: |
@@ -23,7 +23,4 @@ jobs:
         swift package generate-xcodeproj
 
     - name: Build and test
-      run: xcodebuild test -scheme YourProjectScheme -destination 'platform=iOS Simulator,name=iPhone 13'
-
-# Add more steps as needed
-
+      run: xcodebuild test -scheme ChimpTest -destination 'platform=iOS Simulator,name=iPhone 13'
