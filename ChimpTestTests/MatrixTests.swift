@@ -29,7 +29,7 @@ class MatrixTests: XCTestCase {
         let matrix = Matrix(rows: 3, cols: 3, defaultValue: 0)
         
         XCTAssertThrowsError(try matrix.update(3, 3, value: 42)) { error in
-            XCTAssertEqual(error as? MatrixError, MatrixError.outOfBounds)
+            XCTAssertEqual(error as? Matrix<Int>.MatrixError, Matrix<Int>.MatrixError.outOfBounds)
         }
     }
     
