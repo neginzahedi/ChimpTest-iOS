@@ -11,7 +11,7 @@ import SwiftUI
 struct ChimpGrid: View {
     let rows: Int;
     let cols: Int;
-
+    
     var body: some View {
         GeometryReader { geo in
             let width = geo.size.width
@@ -31,7 +31,7 @@ struct ChimpGrid: View {
                 ForEach(0..<rows, id: \.self) { _ in
                     HStack(spacing: gap) {
                         ForEach(0..<cols, id: \.self) { _ in
-                            RoundedRectangle(cornerRadius: 5).foregroundColor(.black)
+                            NumberSquareView(number: 3, isVisible: true)
                                 .frame(width: cell_size, height: cell_size)
                         }
                     }
@@ -44,4 +44,23 @@ struct ChimpGrid: View {
 
 #Preview {
     ChimpGrid(rows: 9, cols: 5)
+}
+
+struct NumberSquareView: View {
+    let number: Int
+    let isVisible: Bool
+    
+    var opacityvalue: Double {
+        if isVisible {
+            return 1.0
+        } else{
+            return 0.0
+        }
+    }
+    
+    var body: some View {
+        Image("\(number)")
+            .resizable()
+            .opacity(opacityvalue)
+    }
 }
