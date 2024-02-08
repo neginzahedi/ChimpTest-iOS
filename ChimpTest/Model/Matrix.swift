@@ -44,7 +44,7 @@ class Matrix<T> {
     ///   - cols: The number of columns in the matrix.
     ///   - defaultValue: The default value used for initializing elements in the matrix.
     init(rows: Int, cols: Int, defaultValue: T) {
-        self.array = Array(repeating: Array(repeating: defaultValue, count: rows), count: cols)
+        self.array = Array(repeating: Array(repeating: defaultValue, count: cols), count: rows)
         self.defaultValue = defaultValue
         self.rows = rows
         self.cols = cols
@@ -87,7 +87,7 @@ class Matrix<T> {
 
     /// Clears all elements in the matrix, setting them to the default value.
     func clear() {
-        array = Array(repeating: Array(repeating: defaultValue, count: rows), count: cols)
+        array = Array(repeating: Array(repeating: defaultValue, count: cols), count: rows)
     }
 
     /// Retrieves the element at the specified indices in the matrix.

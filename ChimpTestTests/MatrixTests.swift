@@ -13,13 +13,15 @@ import XCTest
 
 class MatrixTests: XCTestCase {
     func testMatrixInitialization() {
-        let matrix = Matrix(rows: 3, cols: 3, defaultValue: 0)
+        let matrix = Matrix(rows: 3, cols: 5, defaultValue: 0)
+        
+        XCTAssertNoThrow(matrix.at(2, 4))
         XCTAssertEqual(matrix.rows, 3)
-        XCTAssertEqual(matrix.cols, 3)
+        XCTAssertEqual(matrix.cols, 5)
     }
     
     func testMatrixUpdate() {
-        let matrix = Matrix(rows: 3, cols: 3, defaultValue: 0)
+        let matrix = Matrix(rows: 3, cols: 4, defaultValue: 0)
         
         XCTAssertNoThrow(try matrix.update(1, 1, value: 42))
         XCTAssertEqual(matrix.at(1, 1), 42)

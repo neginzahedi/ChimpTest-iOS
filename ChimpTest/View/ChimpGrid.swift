@@ -9,33 +9,37 @@ import SwiftUI
 
 
 struct ChimpGrid: View {
-    let rows: Int;
-    let cols: Int;
-    
+    @EnvironmentObject var game: Game;
+
     var body: some View {
         GeometryReader { geo in
             let width = geo.size.width
             let height = geo.size.height
             let gap = 10.0
             
-            let x_space = width - (Double((self.cols + 1)) * gap)
-            let x_max_square_size = x_space / Double(self.cols)
+            let x_space = width - (Double((game.cols + 1)) * gap)
+            let x_max_square_size = x_space / Double(game.cols)
             
-            let y_space = height - (Double((self.rows + 1)) * gap)
-            let y_max_square_size = y_space / Double(self.rows)
+            let y_space = height - (Double((game.rows + 1)) * gap)
+            let y_max_square_size = y_space / Double(game.rows)
             
             let cell_size = min(y_max_square_size, x_max_square_size)
             
             
             VStack(spacing: gap){
-                ForEach(0..<rows, id: \.self) { _ in
+                ForEach(0..<game.matrix.rows, id: \.self) { i in
                     HStack(spacing: gap) {
-                        ForEach(0..<cols, id: \.self) { _ in
-                            NumberSquareView(number: 3, isVisible: true)
-                                .frame(width: cell_size, height: cell_size)
+                        ForEach(0..<game.matrix.cols, id: \.self) { j in
+                            let square = game.matrix.at(i, j)
+                            NumberSquareView(number: square.number, isVisible: square.isVisible)
+                            .frame(width: cell_size, height: cell_size)
                         }
                     }
                     
+                }
+                
+                Button("start") {
+                    self.game.next_round(qty: 10)
                 }
             }.position(x: width / 2, y: height / 2)
         }
@@ -43,7 +47,8 @@ struct ChimpGrid: View {
 }
 
 #Preview {
-    ChimpGrid(rows: 9, cols: 5)
+    ChimpGrid()
+        .environmentObject(Game())
 }
 
 struct NumberSquareView: View {
