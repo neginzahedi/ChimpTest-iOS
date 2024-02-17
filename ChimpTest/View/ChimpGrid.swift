@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ChimpGrid: View {
     @EnvironmentObject var game: Game;
-
+    
     var body: some View {
         GeometryReader { geo in
             let width = geo.size.width
@@ -32,10 +32,10 @@ struct ChimpGrid: View {
                         ForEach(0..<game.matrix.cols, id: \.self) { j in
                             let square = game.matrix.at(i, j)
                             NumberSquareView(number: square.number, isVisible: square.isVisible)
-                            .frame(width: cell_size, height: cell_size)
-                            .onTapGesture {
-                                self.game.onSquareTap(pos: .init(i, j))
-                            }
+                                .frame(width: cell_size, height: cell_size)
+                                .onTapGesture {
+                                    self.game.onSquareTap(pos: .init(i, j))
+                                }
                         }
                     }
                     
@@ -55,6 +55,9 @@ struct ChimpGrid: View {
 }
 
 struct NumberSquareView: View {
+    
+    @EnvironmentObject var game: Game;
+    
     let number: Int
     let isVisible: Bool
     
@@ -66,8 +69,9 @@ struct NumberSquareView: View {
         }
     }
     
+    
     var body: some View {
-        Image("\(number)")
+        Image(game.imagesFlipped ? "chimp" : "\(number)")
             .resizable()
             .opacity(opacityvalue)
     }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 
 
@@ -17,7 +18,7 @@ class Game: ObservableObject {
     @Published var game_ended: Bool;
     let rows: Int = 8;
     let cols: Int = 5;
-
+    @Published var imagesFlipped: Bool = false
     
     var positions_with_numbers: Array<Pair<Int, Int>>
     var next_number: Int;
@@ -60,11 +61,17 @@ class Game: ObservableObject {
         
         if pos == self.positions_with_numbers[self.next_number - 1] {
             print("Correct")
+            
+            // test
+            self.imagesFlipped = true
+            
+            
             self.next_number += 1
             try! self.matrix.update(pos.first, pos.second, value: Square(number: 0, isVisible: false))
             if self.next_number > self.positions_with_numbers.capacity {
                 self.score += 1
                 self.generate_random_grid(qty: 5 + self.score)
+                self.imagesFlipped = false
             }
             self.objectWillChange.send()
             
@@ -74,6 +81,7 @@ class Game: ObservableObject {
                 self.game_ended = true
             } else {
                 self.generate_random_grid(qty: 5 + self.score)
+                self.imagesFlipped = false
             }
         }
     }
@@ -83,7 +91,7 @@ class Game: ObservableObject {
         self.score = 0
         self.game_ended = false
         self.generate_random_grid(qty: 5 + self.score)
+        self.imagesFlipped = false
     }
-
 }
 
