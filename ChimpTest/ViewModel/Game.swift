@@ -19,6 +19,7 @@ class Game: ObservableObject {
     let rows: Int = 8;
     let cols: Int = 5;
     @Published var imagesFlipped: Bool = false
+    @Published var isBoardGameHidden: Bool = true
     
     var positions_with_numbers: Array<Pair<Int, Int>>
     var next_number: Int;
@@ -90,6 +91,7 @@ class Game: ObservableObject {
         self.lives = 3
         self.score = 0
         self.game_ended = false
+        self.isBoardGameHidden = false
         self.generate_random_grid(qty: 5 + self.score)
         self.imagesFlipped = false
     }

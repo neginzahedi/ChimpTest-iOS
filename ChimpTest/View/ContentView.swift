@@ -12,14 +12,19 @@ struct ContentView: View {
     
     var body: some View {
         VStack{
-            HStack{
-                Hearts(livesLeft: self.game.lives)
-                Spacer()
-                Score(score: self.game.score)
+            if game.isBoardGameHidden{
+                GameIntroView()
+                    .environmentObject(game)
+            } else {
+                HStack{
+                    Hearts(livesLeft: self.game.lives)
+                    Spacer()
+                    Score(score: self.game.score)
+                }
+                .padding(30)
+                ChimpGrid()
+                    .environmentObject(game)
             }
-            .padding(30)
-            ChimpGrid()
-                .environmentObject(game)
         }
     }
 }
