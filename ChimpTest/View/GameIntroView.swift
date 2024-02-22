@@ -37,6 +37,7 @@ struct GameIntroView: View {
             
             Spacer()
         }
+        .environmentObject(game)
         .padding()
         .background(Color.yellow.opacity(0.6))
     }
@@ -44,4 +45,5 @@ struct GameIntroView: View {
 
 #Preview {
     GameIntroView()
+        .environmentObject(Game())
 }
