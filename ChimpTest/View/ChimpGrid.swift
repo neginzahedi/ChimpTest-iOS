@@ -40,10 +40,6 @@ struct ChimpGrid: View {
                     }
                     
                 }
-                
-                Button("start") {
-                    self.game.restart()
-                }
             }.position(x: width / 2, y: height / 2)
         }
     }
