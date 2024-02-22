@@ -15,13 +15,7 @@ struct ContentView: View {
             if game.isBoardGameHidden{
                 GameIntroView()
             } else {
-                HStack{
-                    Hearts(livesLeft: self.game.lives)
-                    Spacer()
-                    Score(score: self.game.score)
-                }
-                .padding(30)
-                ChimpGrid()
+                GameView()
             }
         }.environmentObject(game)
     }
