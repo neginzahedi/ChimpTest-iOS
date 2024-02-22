@@ -23,6 +23,7 @@ struct Hearts: View {
                 }
             }
         }
+        .font(.system(.headline, design: .monospaced))
     }
 }
 

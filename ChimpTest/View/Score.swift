@@ -16,6 +16,7 @@ struct Score: View {
                 .bold()
             Text("\(score)")
         }
+        .font(.system(.headline, design: .monospaced))
     }
 }
 
