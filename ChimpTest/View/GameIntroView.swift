@@ -8,38 +8,59 @@
 import SwiftUI
 
 struct GameIntroView: View {
+    
     @EnvironmentObject var game: Game;
+    let text: String = "Welcome to the Memory Challenge, a test of your numerical and visual memory.\n\nYour task is to tap the squares in numerical order. The difficulty will increase as you progress.\n\nDo you have what it takes to outsmart the chimp?"
+    @State private var animatedText = ""
+    @State private var shouldStopAddingText = false
     
     var body: some View {
         VStack(spacing: 50){
-            Spacer()
             Text("Chimp Test")
-                .font(.largeTitle)
-            VStack(spacing: 30){
-                Text("Welcome to the Memory Challenge, a test of your numerical and visual memory.\n\nYour task is to tap the squares in numerical order. The difficulty will increase as you progress.\n\nDo you have what it takes to outsmart the chimp?")
-                    .multilineTextAlignment(.leading)
-                    .font(.headline)
-                    .padding()
-            }
-            .frame(maxWidth: .infinity)
+                .font(.system(.largeTitle, design: .monospaced))
+                .padding(.top, 50)
+            Spacer()
+            
+            Text(animatedText)
+                .font(.system(.headline, design: .monospaced))
+                .multilineTextAlignment(.leading)
+                .padding()
+            
+            Spacer()
             Button {
+                shouldStopAddingText.toggle()
                 self.game.restart()
             } label: {
                 Text("Start Test")
                     .bold()
+                    .font(.system(.title2, design: .monospaced))
                     .padding(.horizontal, 50)
                     .padding(.vertical, 10)
             }
             .foregroundColor(.white)
             .background(.black)
             .cornerRadius(10)
-            .padding(.top, 30)
+            .padding(.bottom, 50)
             
-            Spacer()
         }
+        .frame(maxWidth: .infinity)
         .environmentObject(game)
         .padding()
         .background(Color.yellow.opacity(0.6))
+        .onAppear(){
+            animateText()
+        }
+    }
+    func animateText() {
+        guard !shouldStopAddingText else { return }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.075) {
+            let charIndex = animatedText.count
+            if charIndex < text.count {
+                animatedText.append(text[text.index(text.startIndex, offsetBy: charIndex)])
+                animateText()
+            }
+        }
     }
 }
 
