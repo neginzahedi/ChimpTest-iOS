@@ -36,7 +36,9 @@ struct GameView: View {
                 Score(score: self.game.score)
             }
             .padding()
+            .background(Color.yellow.opacity(0.6))
             ChimpGrid()
+                .padding()
         }
         .alert("GAME OVER", isPresented: $game.game_ended, actions: {
             VStack{
