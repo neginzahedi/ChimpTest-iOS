@@ -15,17 +15,19 @@ struct GameIntroView: View {
     @State private var shouldStopAddingText = false
     
     var body: some View {
-        VStack(spacing: 50){
+        VStack(){
             Text("Chimp Test")
                 .font(.system(.largeTitle, design: .monospaced))
                 .padding(.top, 50)
             Spacer()
             
-            Text(animatedText)
-                .font(.system(.headline, design: .monospaced))
-                .multilineTextAlignment(.leading)
-                .padding()
-            
+            VStack(alignment: .leading){
+                Text(animatedText)
+                    .font(.system(.headline, design: .monospaced))
+                    .multilineTextAlignment(.leading)
+                    .padding()
+            }
+            .frame(height: 300,alignment: .topLeading)
             Spacer()
             Button {
                 shouldStopAddingText.toggle()
@@ -46,7 +48,7 @@ struct GameIntroView: View {
         .frame(maxWidth: .infinity)
         .environmentObject(game)
         .padding()
-        .background(Color.yellow.opacity(0.6))
+        .background(Color(red: 251/255, green: 216/255, blue: 93/255))
         .onAppear(){
             animateText()
         }

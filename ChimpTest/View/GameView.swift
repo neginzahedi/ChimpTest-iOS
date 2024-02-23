@@ -36,7 +36,7 @@ struct GameView: View {
                 Score(score: self.game.score)
             }
             .padding()
-            .background(Color.yellow.opacity(0.6))
+            .background(Color(red: 251/255, green: 216/255, blue: 93/255))
             ChimpGrid()
                 .padding()
         }
@@ -61,6 +61,7 @@ struct GameView: View {
         .onAppear(){
             self.game.restart()
         }
+        .background(Color(red: 245/255, green: 245/255, blue: 245/255))
     }
 }
 
