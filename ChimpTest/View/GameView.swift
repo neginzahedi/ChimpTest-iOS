@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct GameView: View {
+    @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var game: Game;
     @State private var isShowingPopover = false
     
@@ -36,6 +37,7 @@ struct GameView: View {
                 Score(score: self.game.score)
             }
             .padding()
+            .foregroundColor(.black)
             .background(Color(red: 251/255, green: 216/255, blue: 93/255))
             ChimpGrid()
                 .padding()
@@ -61,7 +63,7 @@ struct GameView: View {
         .onAppear(){
             self.game.restart()
         }
-        .background(Color(red: 245/255, green: 245/255, blue: 245/255))
+        .background(colorScheme == .dark ? Color(red: 18/255, green: 18/255, blue: 18/255) : Color(red: 245/255, green: 245/255, blue: 245/255))
     }
 }
 

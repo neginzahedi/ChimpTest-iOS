@@ -45,6 +45,7 @@ struct GameIntroView: View {
             .padding(.bottom, 50)
             
         }
+        .foregroundColor(.black)
         .frame(maxWidth: .infinity)
         .environmentObject(game)
         .padding()
