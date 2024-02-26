@@ -42,20 +42,23 @@ struct GameView: View {
             ChimpGrid()
                 .padding()
         }
+        
+        // MARK: Alerts
         .alert("GAME OVER", isPresented: $game.game_ended, actions: {
-            VStack{
-                Button {
-                    self.game.isBoardGameHidden = true
-                } label: {
-                    Text("Exit")
-                }
-                
-                Button {
-                    self.game.restart()
-                } label: {
-                    Text("Start Over")
-                }
+            Button {
+                self.game.isBoardGameHidden = true
+            } label: {
+                Text("Exit")
             }
+            Button {
+                self.game.restart()
+            } label: {
+                Text("Start Over")
+            }
+        }, message: { Text("Your Score: \(game.score)") })
+        
+        .alert("LEVEL PASSED", isPresented: $game.isLevelPassed, actions: {
+            Button("Next") {}
         }, message: {
             Text("Your Score: \(game.score)")
         })

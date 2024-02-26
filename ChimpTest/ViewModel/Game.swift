@@ -20,6 +20,7 @@ class Game: ObservableObject {
     let cols: Int = 5;
     @Published var imagesFlipped: Bool = false
     @Published var isBoardGameHidden: Bool = true
+    @Published var isLevelPassed: Bool = false
     
     var positions_with_numbers: Array<Pair<Int, Int>>
     var next_number: Int;
@@ -70,6 +71,7 @@ class Game: ObservableObject {
             self.next_number += 1
             try! self.matrix.update(pos.first, pos.second, value: Square(number: 0, isVisible: false))
             if self.next_number > self.positions_with_numbers.capacity {
+                self.isLevelPassed.toggle()
                 self.score += 1
                 self.generate_random_grid(qty: 5 + self.score)
                 self.imagesFlipped = false
