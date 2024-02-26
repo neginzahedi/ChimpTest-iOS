@@ -31,7 +31,7 @@ struct GameIntroView: View {
             Spacer()
             Button {
                 shouldStopAddingText.toggle()
-                self.game.restart()
+                self.game.isGameViewHidden.toggle()
             } label: {
                 Text("Start Test")
                     .bold()

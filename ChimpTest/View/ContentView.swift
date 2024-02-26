@@ -12,7 +12,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack{
-            if game.isBoardGameHidden{
+            if game.isGameViewHidden{
                 GameIntroView()
             } else {
                 GameView()

@@ -31,7 +31,7 @@ struct GameView: View {
                         self.game.restart()
                     }
                     Button("Exit") {
-                        self.game.isBoardGameHidden = true
+                        self.game.isGameViewHidden = true
                     }
                 }
                 Spacer()
@@ -49,7 +49,7 @@ struct GameView: View {
         // MARK: Alerts
         .alert("GAME OVER", isPresented: $game.game_ended, actions: {
             Button {
-                self.game.isBoardGameHidden = true
+                self.game.isGameViewHidden = true
             } label: {
                 Text("Exit")
             }
