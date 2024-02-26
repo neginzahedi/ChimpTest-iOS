@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct GameView: View {
+    @AppStorage("isDarkMode") private var isDarkMode = false
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var game: Game;
     @State private var isShowingPopover = false
@@ -23,9 +24,11 @@ struct GameView: View {
                         .foregroundStyle(.black)
                 })
                 .confirmationDialog("More", isPresented: $isShowingPopover) {
+                    Button(isDarkMode ? "Change to Light Mode" : "Change to Dark Mode") {
+                        isDarkMode.toggle()
+                    }
                     Button("Reset") {
                         self.game.restart()
-                        self.isShowingPopover = false
                     }
                     Button("Exit") {
                         self.game.isBoardGameHidden = true
@@ -67,6 +70,7 @@ struct GameView: View {
             self.game.restart()
         }
         .background(colorScheme == .dark ? Color(red: 18/255, green: 18/255, blue: 18/255) : Color(red: 245/255, green: 245/255, blue: 245/255))
+        .preferredColorScheme(isDarkMode ? .dark : .light)
     }
 }
 
