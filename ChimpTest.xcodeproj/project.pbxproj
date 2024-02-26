@@ -27,6 +27,7 @@
 		826773112B6C411F004CB78A /* MatrixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826773102B6C411F004CB78A /* MatrixTests.swift */; };
 		829676D82B758509003A7A8D /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829676D72B758509003A7A8D /* Game.swift */; };
 		82B5116F2B6EB1BD006259C3 /* PairTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B5116E2B6EB1BD006259C3 /* PairTests.swift */; };
+		82DBEE2D2B8D2FF400DE5689 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DBEE2C2B8D2FF400DE5689 /* PrimaryButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		826773102B6C411F004CB78A /* MatrixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatrixTests.swift; sourceTree = "<group>"; };
 		829676D72B758509003A7A8D /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		82B5116E2B6EB1BD006259C3 /* PairTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairTests.swift; sourceTree = "<group>"; };
+		82DBEE2C2B8D2FF400DE5689 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 				825A10302B711A6E00D1ADE9 /* ChimpGrid.swift */,
 				0FF633AE2B6C47F000195F3F /* Hearts.swift */,
 				0F568C432B76EA6300922BCB /* Score.swift */,
+				82DBEE2E2B8D300200DE5689 /* Components */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -188,6 +191,14 @@
 				829676D72B758509003A7A8D /* Game.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		82DBEE2E2B8D300200DE5689 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				82DBEE2C2B8D2FF400DE5689 /* PrimaryButton.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,6 +336,7 @@
 				0F512D5E2B69AA7300321C1E /* ContentView.swift in Sources */,
 				0F512D5C2B69AA7300321C1E /* ChimpTestApp.swift in Sources */,
 				825A10312B711A6E00D1ADE9 /* ChimpGrid.swift in Sources */,
+				82DBEE2D2B8D2FF400DE5689 /* PrimaryButton.swift in Sources */,
 				0FF633AF2B6C47F000195F3F /* Hearts.swift in Sources */,
 				8267730F2B6C3A76004CB78A /* Matrix.swift in Sources */,
 				0F8A73142B828D06000949E8 /* GameIntroView.swift in Sources */,

@@ -31,7 +31,7 @@ struct ChimpGrid: View {
                     HStack(spacing: gap) {
                         ForEach(0..<game.matrix.cols, id: \.self) { j in
                             let square = game.matrix.at(i, j)
-                            NumberSquareView(number: square.number, isVisible: square.isVisible)
+                            NumberView(number: square.number, isVisible: square.isVisible)
                                 .frame(width: cell_size, height: cell_size)
                                 .onTapGesture {
                                     self.game.onSquareTap(pos: .init(i, j))
@@ -50,7 +50,7 @@ struct ChimpGrid: View {
         .environmentObject(Game())
 }
 
-struct NumberSquareView: View {
+struct NumberView: View {
     
     @EnvironmentObject var game: Game;
     
