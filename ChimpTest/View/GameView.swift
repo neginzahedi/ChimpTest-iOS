@@ -10,7 +10,8 @@ import SwiftUI
 struct GameView: View {
     @AppStorage("isDarkMode") private var isDarkMode = false
     @Environment(\.colorScheme) var colorScheme
-    @EnvironmentObject var game: Game;
+    
+    @EnvironmentObject var game: GameManager;
     @State private var isShowingPopover = false
     
     var body: some View {
@@ -37,7 +38,7 @@ struct GameView: View {
                 Spacer()
                 Hearts(livesLeft: self.game.lives)
                 Spacer()
-                Score(score: self.game.score)
+                Score(score: self.game.sequencesCompleted)
             }
             .padding()
             .foregroundColor(.black)
@@ -47,7 +48,7 @@ struct GameView: View {
         }
         
         // MARK: Alerts
-        .alert("GAME OVER", isPresented: $game.game_ended, actions: {
+        .alert("GAME OVER", isPresented: $game.isGameEnded, actions: {
             Button {
                 self.game.isGameViewHidden = true
             } label: {
@@ -58,12 +59,12 @@ struct GameView: View {
             } label: {
                 Text("Start Over")
             }
-        }, message: { Text("Your Score: \(game.score)") })
+        }, message: { Text("Your Score: \(game.sequencesCompleted)") })
         
-        .alert("LEVEL PASSED", isPresented: $game.isLevelPassed, actions: {
+        .alert("LEVEL PASSED", isPresented: $game.sequencePerformed, actions: {
             Button("Next") {}
         }, message: {
-            Text("Your Score: \(game.score)")
+            Text("Your Score: \(game.sequencesCompleted)")
         })
         
         .onAppear(){
@@ -76,5 +77,5 @@ struct GameView: View {
 
 #Preview {
     GameView()
-        .environmentObject(Game())
+        .environmentObject(GameManager())
 }

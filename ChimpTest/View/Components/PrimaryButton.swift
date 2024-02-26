@@ -25,3 +25,9 @@ struct PrimaryButton: View {
         .cornerRadius(10)
     }
 }
+
+#Preview {
+    PrimaryButton(text: "PrimaryButton") {
+        print("Clicked!")
+    }
+}

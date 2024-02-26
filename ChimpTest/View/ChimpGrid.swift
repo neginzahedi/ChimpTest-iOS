@@ -9,13 +9,13 @@ import SwiftUI
 
 
 struct ChimpGrid: View {
-    @EnvironmentObject var game: Game;
+    @EnvironmentObject var game: GameManager;
     
     var body: some View {
         GeometryReader { geo in
             let width = geo.size.width
             let height = geo.size.height
-            let gap = 10.0
+            let gap = 10.0 // gap between and around cells
             
             let x_space = width - (Double((game.cols + 1)) * gap)
             let x_max_square_size = x_space / Double(game.cols)
@@ -31,11 +31,9 @@ struct ChimpGrid: View {
                     HStack(spacing: gap) {
                         ForEach(0..<game.matrix.cols, id: \.self) { j in
                             let square = game.matrix.at(i, j)
-                            NumberView(number: square.number, isVisible: square.isVisible)
-                                .frame(width: cell_size, height: cell_size)
-                                .onTapGesture {
-                                    self.game.onSquareTap(pos: .init(i, j))
-                                }
+                            NumberView(number: square.number, isVisible: square.isVisible, isFlipped: self.game.numbersFlipped, size: cell_size){
+                                    self.game.onNumberTap(pos: .init(i, j))
+                            }
                         }
                     }
                     
@@ -47,28 +45,6 @@ struct ChimpGrid: View {
 
 #Preview {
     ChimpGrid()
-        .environmentObject(Game())
+        .environmentObject(GameManager())
 }
 
-struct NumberView: View {
-    
-    @EnvironmentObject var game: Game;
-    
-    let number: Int
-    let isVisible: Bool
-    
-    var opacityvalue: Double {
-        if isVisible {
-            return 1.0
-        } else{
-            return 0.0
-        }
-    }
-    
-    
-    var body: some View {
-        Image(game.imagesFlipped ? "chimp" : "\(number)")
-            .resizable()
-            .opacity(opacityvalue)
-    }
-}

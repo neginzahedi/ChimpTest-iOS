@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var game: Game = Game()
+    @StateObject var game: GameManager = GameManager() // initializing the GameManager class
     
     var body: some View {
         VStack{

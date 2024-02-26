@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GameIntroView: View {
-    @EnvironmentObject var game: Game;
+    @EnvironmentObject var game: GameManager;
     
     let text: String = "Welcome to the Memory Challenge, a test of your numerical and visual memory.\n\nYour task is to tap the squares in numerical order. The difficulty will increase as you progress.\n\nDo you have what it takes to outsmart the chimp?"
     @State private var animatedText = ""
@@ -61,5 +61,5 @@ struct GameIntroView: View {
 
 #Preview {
     GameIntroView()
-        .environmentObject(Game())
+        .environmentObject(GameManager())
 }
