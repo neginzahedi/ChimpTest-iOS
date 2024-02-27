@@ -13,9 +13,9 @@ struct ContentView: View {
     var body: some View {
         VStack{
             if game.isGameViewHidden{
-                GameIntroView()
+                WelcomeScreen()
             } else {
-                GameView()
+                GameScreen()
             }
         }.environmentObject(game)
     }

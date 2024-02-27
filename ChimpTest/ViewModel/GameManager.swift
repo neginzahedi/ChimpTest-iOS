@@ -19,7 +19,7 @@ class GameManager: ObservableObject {
     @Published var sequencePerformed: Bool = false // true if user correctly performs the sequence
     @Published var numbersFlipped: Bool = false // flips all NumberViews if true
     
-    // TODO: - Removed this when navigation is implemented
+    // TODO: - Remove this when navigation is implemented
     @Published var isGameViewHidden: Bool = true
 
     

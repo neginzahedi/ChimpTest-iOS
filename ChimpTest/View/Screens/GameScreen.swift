@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct GameView: View {
+struct GameScreen: View {
     @AppStorage("isDarkMode") private var isDarkMode = false
     @Environment(\.colorScheme) var colorScheme
     
@@ -76,6 +76,6 @@ struct GameView: View {
 }
 
 #Preview {
-    GameView()
+    GameScreen()
         .environmentObject(GameManager())
 }

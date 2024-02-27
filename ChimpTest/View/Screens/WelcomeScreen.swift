@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct GameIntroView: View {
+struct WelcomeScreen: View {
     @EnvironmentObject var game: GameManager;
     
     let text: String = "Welcome to the Memory Challenge, a test of your numerical and visual memory.\n\nYour task is to tap the squares in numerical order. The difficulty will increase as you progress.\n\nDo you have what it takes to outsmart the chimp?"
@@ -60,6 +60,6 @@ struct GameIntroView: View {
 }
 
 #Preview {
-    GameIntroView()
+    WelcomeScreen()
         .environmentObject(GameManager())
 }
