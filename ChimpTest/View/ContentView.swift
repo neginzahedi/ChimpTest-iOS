@@ -11,6 +11,7 @@ struct ContentView: View {
     @StateObject var game: GameManager = GameManager() // initializing the GameManager class
     
     var body: some View {
+        // TODO: - Implement NavigationStack here
         VStack{
             if game.isGameViewHidden{
                 WelcomeScreen()

@@ -26,7 +26,8 @@ struct NumberView: View {
             .opacity(opacityValue)
             .onTapGesture {
                 action()
-            }            }
+            }
+    }
 }
 
 #Preview {

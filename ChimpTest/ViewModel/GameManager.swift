@@ -54,7 +54,6 @@ class GameManager: ObservableObject {
         
         guard qty <= positions.capacity else { fatalError("Logical error: number of squares exceed the number of available positions in the matrix.")}
         
-        
         self.numberedPositions = Array(positions.shuffled().prefix(qty))
         self.nextNumber = 1
         var counter = 1
@@ -69,9 +68,7 @@ class GameManager: ObservableObject {
     func onNumberTap(pos: Pair<Int, Int>){
         guard self.numberedPositions.contains(pos) && !self.isGameEnded else { return }
         
-        if pos == self.numberedPositions[self.nextNumber - 1] {
-            print("Correct")
-            
+        if pos == self.numberedPositions[self.nextNumber - 1] {            
             self.numbersFlipped = true
             self.nextNumber += 1
             
@@ -97,9 +94,9 @@ class GameManager: ObservableObject {
     
     func restart(){
         self.lives = 3
-        self.sequencesCompleted = 0
         self.isGameEnded = false
-        self.generateRandomGrid(qty: 5 + self.sequencesCompleted)
         self.numbersFlipped = false
+        self.sequencesCompleted = 0
+        self.generateRandomGrid(qty: 5 + self.sequencesCompleted)
     }
 }

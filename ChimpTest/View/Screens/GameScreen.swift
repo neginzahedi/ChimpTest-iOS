@@ -61,11 +61,11 @@ struct GameScreen: View {
             }
         }, message: { Text("Your Score: \(game.sequencesCompleted)") })
         
-        .alert("LEVEL PASSED", isPresented: $game.sequencePerformed, actions: {
-            Button("Next") {}
-        }, message: {
-            Text("Your Score: \(game.sequencesCompleted)")
-        })
+//        .alert("LEVEL PASSED", isPresented: $game.sequencePerformed, actions: {
+//            Button("Next") {}
+//        }, message: {
+//            Text("Your Score: \(game.sequencesCompleted)")
+//        })
         
         .onAppear(){
             self.game.restart()

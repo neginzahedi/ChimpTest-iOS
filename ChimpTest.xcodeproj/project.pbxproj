@@ -130,8 +130,8 @@
 				8267730B2B6C37BB004CB78A /* Model */,
 				8267730C2B6C37C1004CB78A /* View */,
 				8267730D2B6C37C5004CB78A /* ViewModel */,
-				0F512D5F2B69AA7400321C1E /* Assets.xcassets */,
 				0F512D612B69AA7400321C1E /* Preview Content */,
+				0F512D5F2B69AA7400321C1E /* Assets.xcassets */,
 			);
 			path = ChimpTest;
 			sourceTree = "<group>";
@@ -147,10 +147,10 @@
 		0F512D6B2B69AA7400321C1E /* ChimpTestTests */ = {
 			isa = PBXGroup;
 			children = (
-				0F512D6C2B69AA7400321C1E /* ChimpTestTests.swift */,
-				826773102B6C411F004CB78A /* MatrixTests.swift */,
 				82B5116E2B6EB1BD006259C3 /* PairTests.swift */,
+				826773102B6C411F004CB78A /* MatrixTests.swift */,
 				824632CB2B7011A100074065 /* LinkedListTests.swift */,
+				0F512D6C2B69AA7400321C1E /* ChimpTestTests.swift */,
 			);
 			path = ChimpTestTests;
 			sourceTree = "<group>";
@@ -167,9 +167,9 @@
 		8267730B2B6C37BB004CB78A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				824476772B6D4F2D00E14528 /* Pair.swift */,
 				8267730E2B6C3A76004CB78A /* Matrix.swift */,
 				8210A0592B7AA2B200B0B3DE /* Square.swift */,
-				824476772B6D4F2D00E14528 /* Pair.swift */,
 				824632C92B7006B300074065 /* LinkedList.swift */,
 			);
 			path = Model;
@@ -196,8 +196,8 @@
 		8273F0072B8E6D7E00B411EE /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				0F8A73132B828D06000949E8 /* WelcomeScreen.swift */,
 				0FF34BEE2B8678C6005D843C /* GameScreen.swift */,
+				0F8A73132B828D06000949E8 /* WelcomeScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -205,12 +205,12 @@
 		82DBEE2E2B8D300200DE5689 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				825A10302B711A6E00D1ADE9 /* ChimpGrid.swift */,
 				0F568C432B76EA6300922BCB /* Score.swift */,
 				0FF633AE2B6C47F000195F3F /* Hearts.swift */,
-				82DBEE2C2B8D2FF400DE5689 /* PrimaryButton.swift */,
-				82DBEE2F2B8D32B000DE5689 /* NumberView.swift */,
 				8273F0082B8E6F7700B411EE /* TimerView.swift */,
+				825A10302B711A6E00D1ADE9 /* ChimpGrid.swift */,
+				82DBEE2F2B8D32B000DE5689 /* NumberView.swift */,
+				82DBEE2C2B8D2FF400DE5689 /* PrimaryButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
