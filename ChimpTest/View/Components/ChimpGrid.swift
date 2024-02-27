@@ -32,16 +32,16 @@ struct ChimpGrid: View {
                         ForEach(0..<game.matrix.cols, id: \.self) { j in
                             let square = game.matrix.at(i, j)
                             NumberView(number: square.number, isVisible: square.isVisible, isFlipped: self.game.numbersFlipped, size: cell_size){
-                                    self.game.onNumberTap(pos: .init(i, j))
+                                self.game.onNumberTap(pos: .init(i, j))
                             }
                         }
                     }
-                    
                 }
             }.position(x: width / 2, y: height / 2)
         }
     }
 }
+
 
 #Preview {
     ChimpGrid()

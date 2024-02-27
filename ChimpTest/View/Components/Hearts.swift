@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct Hearts: View {
-    
-    var livesLeft: Int
+    let livesLeft: Int
     let maxLives: Int = 3
     
     var body: some View {

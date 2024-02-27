@@ -72,11 +72,9 @@ class GameManager: ObservableObject {
         if pos == self.numberedPositions[self.nextNumber - 1] {
             print("Correct")
             
-            // test
             self.numbersFlipped = true
-            
-            
             self.nextNumber += 1
+            
             try! self.matrix.update(pos.first, pos.second, value: Square(number: 0, isVisible: false))
             if self.nextNumber > self.numberedPositions.capacity {
                 self.sequencePerformed.toggle()
