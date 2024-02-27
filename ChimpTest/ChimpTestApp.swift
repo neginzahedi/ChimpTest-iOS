@@ -2,7 +2,7 @@
 //  ChimpTestApp.swift
 //  ChimpTest
 //
-//  Created by Negin Zahedi on 2024-01-30.
+//  Created on 2024-01-30.
 //
 
 import SwiftUI

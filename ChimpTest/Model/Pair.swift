@@ -2,7 +2,7 @@
 //  Pair.swift
 //  ChimpTest
 //
-//  Created by Alireza Zahedi on 2024-02-02.
+//  Created on 2024-02-02.
 //
 /// A generic structure representing a pair of two values.
 ///

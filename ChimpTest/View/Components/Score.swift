@@ -2,7 +2,7 @@
 //  Score.swift
 //  ChimpTest
 //
-//  Created by Negin Zahedi on 2024-02-09.
+//  Created on 2024-02-09.
 //
 
 import SwiftUI

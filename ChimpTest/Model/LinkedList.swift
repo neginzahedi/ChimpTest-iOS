@@ -2,7 +2,7 @@
 //  LinkedList.swift
 //  ChimpTest
 //
-//  Created by Alireza Zahedi on 2024-02-04.
+//  Created on 2024-02-04.
 //
 
 import Foundation

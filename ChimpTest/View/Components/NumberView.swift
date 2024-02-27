@@ -2,7 +2,7 @@
 //  NumberView.swift
 //  ChimpTest
 //
-//  Created by Alireza Zahedi on 2024-02-26.
+//  Created on 2024-02-26.
 //
 
 import SwiftUI

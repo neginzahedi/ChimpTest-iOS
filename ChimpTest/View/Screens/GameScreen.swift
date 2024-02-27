@@ -2,7 +2,7 @@
 //  GameView.swift
 //  ChimpTest
 //
-//  Created by Negin Zahedi on 2024-02-21.
+//  Created on 2024-02-21.
 //
 
 import SwiftUI

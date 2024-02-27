@@ -2,7 +2,7 @@
 //  LinkedListTests.swift
 //  ChimpTestTests
 //
-//  Created by Alireza Zahedi on 2024-02-04.
+//  Created on 2024-02-04.
 //
 
 import XCTest

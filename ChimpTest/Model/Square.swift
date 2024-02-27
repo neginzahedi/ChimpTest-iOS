@@ -2,7 +2,7 @@
 //  Square.swift
 //  ChimpTest
 //
-//  Created by Alireza Zahedi on 2024-02-12.
+//  Created on 2024-02-12.
 //
 
 import Foundation

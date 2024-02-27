@@ -2,7 +2,7 @@
 //  Game.swift
 //  ChimpTest
 //
-//  Created by Alireza Zahedi on 2024-02-08.
+//  Created on 2024-02-08.
 //
 
 import Foundation
