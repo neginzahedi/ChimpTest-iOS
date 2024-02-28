@@ -16,6 +16,9 @@
 		0F512D792B69AA7400321C1E /* ChimpTestUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F512D782B69AA7400321C1E /* ChimpTestUITestsLaunchTests.swift */; };
 		0F568C442B76EA6300922BCB /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F568C432B76EA6300922BCB /* Score.swift */; };
 		0F8A73142B828D06000949E8 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8A73132B828D06000949E8 /* WelcomeScreen.swift */; };
+		0FAA2FFD2B8FC27A0010B7EF /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAA2FFC2B8FC27A0010B7EF /* SoundManager.swift */; };
+		0FAA30012B8FCBC80010B7EF /* correct.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0FAA2FFF2B8FCBC80010B7EF /* correct.wav */; };
+		0FAA30022B8FCBC80010B7EF /* wrong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0FAA30002B8FCBC80010B7EF /* wrong.wav */; };
 		0FF34BEF2B8678C6005D843C /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF34BEE2B8678C6005D843C /* GameScreen.swift */; };
 		0FF633AF2B6C47F000195F3F /* Hearts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF633AE2B6C47F000195F3F /* Hearts.swift */; };
 		8210A05A2B7AA2B200B0B3DE /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8210A0592B7AA2B200B0B3DE /* Square.swift */; };
@@ -63,6 +66,9 @@
 		0F512D782B69AA7400321C1E /* ChimpTestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChimpTestUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0F568C432B76EA6300922BCB /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		0F8A73132B828D06000949E8 /* WelcomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
+		0FAA2FFC2B8FC27A0010B7EF /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		0FAA2FFF2B8FCBC80010B7EF /* correct.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = correct.wav; path = ../../../../../../Downloads/correct.wav; sourceTree = "<group>"; };
+		0FAA30002B8FCBC80010B7EF /* wrong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = wrong.wav; path = ../../../../../../Downloads/wrong.wav; sourceTree = "<group>"; };
 		0FF34BEE2B8678C6005D843C /* GameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreen.swift; sourceTree = "<group>"; };
 		0FF633AE2B6C47F000195F3F /* Hearts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hearts.swift; sourceTree = "<group>"; };
 		8210A0592B7AA2B200B0B3DE /* Square.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
@@ -133,6 +139,7 @@
 				8267730B2B6C37BB004CB78A /* Model */,
 				8267730C2B6C37C1004CB78A /* View */,
 				8267730D2B6C37C5004CB78A /* ViewModel */,
+				0FAA2FFE2B8FCBA80010B7EF /* Sounds */,
 				0F512D612B69AA7400321C1E /* Preview Content */,
 				0F512D5F2B69AA7400321C1E /* Assets.xcassets */,
 			);
@@ -167,6 +174,15 @@
 			path = ChimpTestUITests;
 			sourceTree = "<group>";
 		};
+		0FAA2FFE2B8FCBA80010B7EF /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				0FAA2FFF2B8FCBC80010B7EF /* correct.wav */,
+				0FAA30002B8FCBC80010B7EF /* wrong.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		8267730B2B6C37BB004CB78A /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				829676D72B758509003A7A8D /* GameManager.swift */,
+				0FAA2FFC2B8FC27A0010B7EF /* SoundManager.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -323,6 +340,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F512D632B69AA7400321C1E /* Preview Assets.xcassets in Resources */,
+				0FAA30022B8FCBC80010B7EF /* wrong.wav in Resources */,
+				0FAA30012B8FCBC80010B7EF /* correct.wav in Resources */,
 				8242405B2B8FB4C2003BEC28 /* Localizable.strings in Resources */,
 				0F512D602B69AA7400321C1E /* Assets.xcassets in Resources */,
 			);
@@ -350,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8273F0092B8E6F7700B411EE /* TimerView.swift in Sources */,
+				0FAA2FFD2B8FC27A0010B7EF /* SoundManager.swift in Sources */,
 				8210A05A2B7AA2B200B0B3DE /* Square.swift in Sources */,
 				824632CA2B7006B300074065 /* LinkedList.swift in Sources */,
 				0F512D5E2B69AA7300321C1E /* ContentView.swift in Sources */,
