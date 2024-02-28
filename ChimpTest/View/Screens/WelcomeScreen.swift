@@ -10,10 +10,11 @@ import SwiftUI
 struct WelcomeScreen: View {
     @EnvironmentObject var game: GameManager;
     
-    let text: String = "Welcome to the Memory Challenge, a test of your numerical and visual memory.\n\nYour task is to tap the squares in numerical order. The difficulty will increase as you progress.\n\nDo you have what it takes to outsmart the chimp?"
     @State private var animatedText = ""
     @State private var shouldStopAddingText = false
     
+    let text: String = NSLocalizedString("welcomeScreenMessage", comment: "")
+
     var body: some View {
         VStack(){
             Text("Chimp Test")
@@ -48,7 +49,7 @@ struct WelcomeScreen: View {
     
     func animateText() {
         guard !shouldStopAddingText else { return }
-        
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.075) {
             let charIndex = animatedText.count
             if charIndex < text.count {
