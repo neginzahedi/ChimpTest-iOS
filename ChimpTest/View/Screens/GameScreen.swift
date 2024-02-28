@@ -24,6 +24,7 @@ struct GameScreen: View {
                         .font(.title)
                         .foregroundStyle(.black)
                 })
+                // TODO: - Navigate to the Settings page and get rid of this dialog
                 .confirmationDialog("More", isPresented: $isShowingPopover) {
                     Button(isDarkMode ? "Change to Light Mode" : "Change to Dark Mode") {
                         isDarkMode.toggle()

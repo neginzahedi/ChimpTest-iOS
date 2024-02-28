@@ -1,0 +1,8 @@
+/* 
+  Localizable.strings
+  ChimpTest
+
+  Created by Alireza Zahedi on 2024-02-28.
+  
+*/
+"welcomeScreenMessage" = "Welcome to the Memory Challenge, a test of your numerical and visual memory.\n\nYour task is to tap the squares in numerical order. The difficulty will increase as you progress.\n\nDo you have what it takes to outsmart the chimp?";
