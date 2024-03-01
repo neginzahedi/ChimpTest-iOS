@@ -9,6 +9,17 @@ import Foundation
 import SwiftUI
 
 
+struct GameConfig {
+    /* -- WARNING --
+     based on testing this works well on portrait mode on iPhones and iPads
+     we could make it dynamic in the future
+     */
+    static let rows = 8;
+    static let cols = 5;
+    static let initialLives = 3
+    static let initialSequences = 5
+}
+
 class GameManager: ObservableObject {
     // MARK: - Properties
     @Published var matrix: Matrix<Square>;
@@ -21,22 +32,14 @@ class GameManager: ObservableObject {
     
     // TODO: - Remove this when navigation is implemented
     @Published var isGameViewHidden: Bool = true
-
-    
-    /* -- WARNING --
-     based on testing this works well on portrait mode on iPhones and iPads
-     we could make it dynamic in the future
-     */
-    let rows: Int = 8;
-    let cols: Int = 5;
     
     var numberedPositions: Array<Pair<Int, Int>> // an array of all locations where there is a number
     var nextNumber: Int; // the next number to be clicked by the user
     
     init(){
-        self.matrix = Matrix(rows: self.rows, cols: self.cols, defaultValue: Square(number: 1, isVisible: false))
+        self.matrix = Matrix(rows: GameConfig.rows, cols: GameConfig.cols, defaultValue: Square(number: 1, isVisible: false))
         self.sequencesCompleted = 0
-        self.lives = 3
+        self.lives = GameConfig.initialLives
         self.isGameEnded = true
         
         self.numberedPositions = []
@@ -68,7 +71,7 @@ class GameManager: ObservableObject {
     func onNumberTap(pos: Pair<Int, Int>){
         guard self.numberedPositions.contains(pos) && !self.isGameEnded else { return }
         
-        if pos == self.numberedPositions[self.nextNumber - 1] {            
+        if pos == self.numberedPositions[self.nextNumber - 1] {
             self.numbersFlipped = true
             self.nextNumber += 1
             
@@ -76,7 +79,7 @@ class GameManager: ObservableObject {
             if self.nextNumber > self.numberedPositions.capacity {
                 self.sequencePerformed.toggle()
                 self.sequencesCompleted += 1
-                self.generateRandomGrid(qty: 5 + self.sequencesCompleted)
+                self.generateRandomGrid(qty: GameConfig.initialSequences + self.sequencesCompleted)
                 self.numbersFlipped = false
             }
             self.objectWillChange.send()
@@ -86,7 +89,7 @@ class GameManager: ObservableObject {
             if self.lives == 0 {
                 self.isGameEnded = true
             } else {
-                self.generateRandomGrid(qty: 5 + self.sequencesCompleted)
+                self.generateRandomGrid(qty: GameConfig.initialSequences + self.sequencesCompleted)
                 self.numbersFlipped = false
             }
         }
@@ -97,6 +100,6 @@ class GameManager: ObservableObject {
         self.isGameEnded = false
         self.numbersFlipped = false
         self.sequencesCompleted = 0
-        self.generateRandomGrid(qty: 5 + self.sequencesCompleted)
+        self.generateRandomGrid(qty: GameConfig.initialSequences + self.sequencesCompleted)
     }
 }
