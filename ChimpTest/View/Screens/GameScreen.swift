@@ -8,24 +8,26 @@
 import SwiftUI
 
 struct GameScreen: View {
+    
     @AppStorage("isDarkMode") private var isDarkMode = false
+    
     @Environment(\.colorScheme) var colorScheme
+    @Environment(\.presentationMode) var presentationMode
     
     @EnvironmentObject var game: GameManager;
-    @State private var isShowingPopover = false
     
     var body: some View {
         VStack{
             HStack{
                 Button(action: {
-                    self.isShowingPopover = true
+                    self.game.isShowingPopover = true
                 }, label: {
                     Image(systemName: "gear")
                         .font(.title)
                         .foregroundStyle(.black)
                 })
                 // TODO: - Navigate to the Settings page and get rid of this dialog
-                .confirmationDialog("More", isPresented: $isShowingPopover) {
+                .confirmationDialog("More", isPresented: $game.isShowingPopover) {
                     Button(isDarkMode ? "Change to Light Mode" : "Change to Dark Mode") {
                         isDarkMode.toggle()
                     }
@@ -33,7 +35,7 @@ struct GameScreen: View {
                         self.game.restart()
                     }
                     Button("Exit") {
-                        self.game.isGameViewHidden = true
+                        presentationMode.wrappedValue.dismiss()
                     }
                 }
                 Spacer()
@@ -47,11 +49,11 @@ struct GameScreen: View {
             ChimpGrid()
                 .padding()
         }
-        
+        .navigationBarBackButtonHidden()
         // MARK: Alerts
         .alert("GAME OVER", isPresented: $game.isGameEnded, actions: {
             Button {
-                self.game.isGameViewHidden = true
+                presentationMode.wrappedValue.dismiss()
             } label: {
                 Text("Exit")
             }
@@ -62,11 +64,11 @@ struct GameScreen: View {
             }
         }, message: { Text("Your Score: \(game.sequencesCompleted)") })
         
-//        .alert("LEVEL PASSED", isPresented: $game.sequencePerformed, actions: {
-//            Button("Next") {}
-//        }, message: {
-//            Text("Your Score: \(game.sequencesCompleted)")
-//        })
+        //        .alert("LEVEL PASSED", isPresented: $game.sequencePerformed, actions: {
+        //            Button("Next") {}
+        //        }, message: {
+        //            Text("Your Score: \(game.sequencesCompleted)")
+        //        })
         
         .onAppear(){
             self.game.restart()

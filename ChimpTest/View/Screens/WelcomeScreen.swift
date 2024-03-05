@@ -14,42 +14,53 @@ struct WelcomeScreen: View {
     @State private var shouldStopAddingText = false
     
     let text: String = NSLocalizedString("welcomeScreenMessage", comment: "")
-
+    
     var body: some View {
-        VStack(){
-            Text("Chimp Test")
-                .font(.system(.largeTitle, design: .monospaced))
-                .padding(.top, 50)
-            
-            Spacer()
-            
-            VStack(alignment: .leading){
-                Text(animatedText)
-                    .font(.system(.headline, design: .monospaced))
-                    .multilineTextAlignment(.leading)
-                    .padding()
+        NavigationStack{
+            VStack(){
+                Text("Chimp Test")
+                    .font(.system(.largeTitle, design: .monospaced))
+                    .padding(.top, 50)
+                
+                Spacer()
+                
+                VStack(alignment: .leading){
+                    Text(animatedText)
+                        .font(.system(.headline, design: .monospaced))
+                        .multilineTextAlignment(.leading)
+                        .padding()
+                }
+                .frame(height: 300,alignment: .topLeading)
+                Spacer()
+                NavigationLink {
+                    GameScreen()
+                        .environmentObject(game)
+                } label: {
+                    Text("Start Test")
+                        .bold()
+                        .font(.system(.title2, design: .monospaced))
+                        .padding(.horizontal, 50)
+                        .padding(.vertical, 10)
+                        .foregroundColor(.white)
+                        .background(.black)
+                        .cornerRadius(10)
+                }
+                .padding(.bottom, 50)
             }
-            .frame(height: 300,alignment: .topLeading)
-            Spacer()
-            PrimaryButton(text: "Start Test"){
-                shouldStopAddingText.toggle()
-                self.game.isGameViewHidden.toggle()
+            .foregroundColor(.black)
+            .frame(maxWidth: .infinity)
+            .environmentObject(game)
+            .padding()
+            .background(Color(red: 251/255, green: 216/255, blue: 93/255))
+            .onAppear(){
+                animateText()
             }
-            .padding(.bottom, 50)
-        }
-        .foregroundColor(.black)
-        .frame(maxWidth: .infinity)
-        .environmentObject(game)
-        .padding()
-        .background(Color(red: 251/255, green: 216/255, blue: 93/255))
-        .onAppear(){
-            animateText()
         }
     }
     
     func animateText() {
         guard !shouldStopAddingText else { return }
-
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.075) {
             let charIndex = animatedText.count
             if charIndex < text.count {

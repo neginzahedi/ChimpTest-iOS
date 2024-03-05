@@ -29,9 +29,7 @@ class GameManager: ObservableObject {
     @Published var isGameEnded: Bool;
     @Published var sequencePerformed: Bool = false // true if user correctly performs the sequence
     @Published var numbersFlipped: Bool = false // flips all NumberViews if true
-    
-    // TODO: - Remove this when navigation is implemented
-    @Published var isGameViewHidden: Bool = true
+    @Published var isShowingPopover = false
     
     var numberedPositions: Array<Pair<Int, Int>> // an array of all locations where there is a number
     var nextNumber: Int; // the next number to be clicked by the user
@@ -40,7 +38,7 @@ class GameManager: ObservableObject {
         self.matrix = Matrix(rows: GameConfig.rows, cols: GameConfig.cols, defaultValue: Square(number: 1, isVisible: false))
         self.sequencesCompleted = 0
         self.lives = GameConfig.initialLives
-        self.isGameEnded = true
+        self.isGameEnded = false
         
         self.numberedPositions = []
         self.nextNumber = 1
