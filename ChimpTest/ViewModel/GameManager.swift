@@ -21,30 +21,34 @@ struct GameConfig {
 }
 
 class GameManager: ObservableObject {
-    // MARK: - Properties
-    @Published var matrix: Matrix<Square>;
     
-    @Published var lives: Int; // attempts left
-    @Published var sequencesCompleted: Int; // number of sequences correctly performed
-    @Published var isGameEnded: Bool;
-    @Published var sequencePerformed: Bool = false // true if user correctly performs the sequence
-    @Published var numbersFlipped: Bool = false // flips all NumberViews if true
-    @Published var isShowingPopover = false
+    // MARK: - Properties
+    @Published var matrix: Matrix<Square>
+    
+    @Published var lives: Int // attempts left
+    @Published var sequencesCompleted: Int // number of sequences correctly performed
+    @Published var isGameEnded: Bool
+    @Published var sequencePerformed: Bool // true if user correctly performs the sequence
+    @Published var numbersFlipped: Bool // flips all NumberViews if true
+    @Published var isShowingPopover: Bool
     
     var numberedPositions: Array<Pair<Int, Int>> // an array of all locations where there is a number
-    var nextNumber: Int; // the next number to be clicked by the user
+    var nextNumber: Int // the next number to be clicked by the user
     
+    // MARK: - init
     init(){
         self.matrix = Matrix(rows: GameConfig.rows, cols: GameConfig.cols, defaultValue: Square(number: 1, isVisible: false))
-        self.sequencesCompleted = 0
         self.lives = GameConfig.initialLives
+        self.sequencesCompleted = 0
         self.isGameEnded = false
-        
+        self.sequencePerformed = false
+        self.numbersFlipped = false
+        self.isShowingPopover = false
         self.numberedPositions = []
         self.nextNumber = 1
     }
     
-    
+    // MARK: - Methods
     func generateRandomGrid(qty: Int){
         self.matrix.clear()
         var positions: Set<Pair<Int, Int>> = [];
