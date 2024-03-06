@@ -48,7 +48,6 @@ class GameManager: ObservableObject {
         self.nextNumber = 1
     }
     
-    // MARK: - Methods
     func generateRandomGrid(qty: Int){
         self.matrix.clear()
         var positions: Set<Pair<Int, Int>> = [];
@@ -71,37 +70,52 @@ class GameManager: ObservableObject {
     }
     
     func onNumberTap(pos: Pair<Int, Int>){
+        // onInvalidPositionTap
         guard self.numberedPositions.contains(pos) && !self.isGameEnded else { return }
         
+        // onCorrectTap
         if pos == self.numberedPositions[self.nextNumber - 1] {
-            self.numbersFlipped = true
-            self.nextNumber += 1
-            
-            try! self.matrix.update(pos.first, pos.second, value: Square(number: 0, isVisible: false))
-            if self.nextNumber > self.numberedPositions.capacity {
-                self.sequencePerformed.toggle()
-                self.sequencesCompleted += 1
-                self.generateRandomGrid(qty: GameConfig.initialSequences + self.sequencesCompleted)
-                self.numbersFlipped = false
-            }
-            self.objectWillChange.send()
-            
+            self.onCorrectNumberTap(pos: pos)
         } else {
-            self.lives -= 1
-            if self.lives == 0 {
-                self.isGameEnded = true
-            } else {
-                self.generateRandomGrid(qty: GameConfig.initialSequences + self.sequencesCompleted)
-                self.numbersFlipped = false
-            }
+            // onWrongTap
+            self.onWrongNumberTap(pos: pos)
         }
     }
     
-    func restart(){
-        self.lives = 3
+    private func onWrongNumberTap(pos: Pair<Int, Int>){
+        print("Expected: \(self.numberedPositions[self.nextNumber - 1].description) but tapped: \(pos.description)")
+        self.lives -= 1
+        if self.lives == 0 {
+            self.isGameEnded = true
+        } else {
+            self.generateRandomGrid(qty: GameConfig.initialSequences + self.sequencesCompleted)
+            self.numbersFlipped = false
+        }
+    }
+    
+    private func onCorrectNumberTap(pos: Pair<Int, Int>){
+        self.numbersFlipped = true // flips all the numbers
+        self.nextNumber += 1
+        try! self.matrix.update(pos.first, pos.second, value: Square(number: 0, isVisible: false)) // remove the tapped number
+        
+        if self.nextNumber > self.numberedPositions.capacity { // nextNumber starts from 1 (not 0 indexed), don't get confused
+            self.onSequenceCompletion()
+        }
+        self.objectWillChange.send()
+    }
+    
+    private func onSequenceCompletion(){
+        self.sequencePerformed.toggle()
+        self.sequencesCompleted += 1
+        self.generateRandomGrid(qty: GameConfig.initialSequences + self.sequencesCompleted)
+        self.numbersFlipped = false
+    }
+    
+    func start(){
+        self.lives = GameConfig.initialLives
         self.isGameEnded = false
         self.numbersFlipped = false
         self.sequencesCompleted = 0
-        self.generateRandomGrid(qty: GameConfig.initialSequences + self.sequencesCompleted)
+        self.generateRandomGrid(qty: GameConfig.initialSequences)
     }
 }

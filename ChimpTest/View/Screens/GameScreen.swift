@@ -32,7 +32,7 @@ struct GameScreen: View {
                         isDarkMode.toggle()
                     }
                     Button("Reset") {
-                        self.game.restart()
+                        self.game.start()
                     }
                     Button("Exit") {
                         presentationMode.wrappedValue.dismiss()
@@ -58,7 +58,7 @@ struct GameScreen: View {
                 Text("Exit")
             }
             Button {
-                self.game.restart()
+                self.game.start()
             } label: {
                 Text("Start Over")
             }
@@ -71,7 +71,7 @@ struct GameScreen: View {
         //        })
         
         .onAppear(){
-            self.game.restart()
+            self.game.start()
         }
         .background(colorScheme == .dark ? Color(red: 18/255, green: 18/255, blue: 18/255) : Color(red: 245/255, green: 245/255, blue: 245/255))
         .preferredColorScheme(isDarkMode ? .dark : .light)
