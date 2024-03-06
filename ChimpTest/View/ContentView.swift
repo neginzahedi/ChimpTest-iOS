@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     @StateObject var game: GameManager = GameManager() // initializing the GameManager class
+    @StateObject var settings = SettingsViewModel.shared
     
     var body: some View {
         WelcomeScreen()
             .environmentObject(game)
+            .preferredColorScheme(settings.isDarkMode ? .dark : .light)
     }
 }
 

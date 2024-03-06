@@ -9,11 +9,8 @@ import SwiftUI
 
 struct GameScreen: View {
     
-    @AppStorage("isDarkMode") private var isDarkMode = false
-    
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.presentationMode) var presentationMode
-    
     @EnvironmentObject var game: GameManager;
     
     var body: some View {
@@ -26,11 +23,13 @@ struct GameScreen: View {
                         .font(.title)
                         .foregroundStyle(.black)
                 })
-                // TODO: - Navigate to the Settings page and get rid of this dialog
                 .confirmationDialog("More", isPresented: $game.isShowingPopover) {
-                    Button(isDarkMode ? "Change to Light Mode" : "Change to Dark Mode") {
-                        isDarkMode.toggle()
+                    NavigationLink {
+                        SettingsScreen()
+                    } label: {
+                        Text("Settings")
                     }
+                    
                     Button("Reset") {
                         self.game.start()
                     }
@@ -74,7 +73,6 @@ struct GameScreen: View {
             self.game.start()
         }
         .background(colorScheme == .dark ? Color(red: 18/255, green: 18/255, blue: 18/255) : Color(red: 245/255, green: 245/255, blue: 245/255))
-        .preferredColorScheme(isDarkMode ? .dark : .light)
     }
 }
 
