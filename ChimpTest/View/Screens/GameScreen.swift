@@ -13,17 +13,19 @@ struct GameScreen: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var game: GameManager;
     
+    @State private var isShowingPopover: Bool = false;
+    
     var body: some View {
         VStack{
             HStack{
                 Button(action: {
-                    self.game.isShowingPopover = true
+                    isShowingPopover = true
                 }, label: {
                     Image(systemName: "gear")
                         .font(.title)
                         .foregroundStyle(.black)
                 })
-                .confirmationDialog("More", isPresented: $game.isShowingPopover) {
+                .confirmationDialog("More", isPresented: $isShowingPopover) {
                     NavigationLink {
                         SettingsScreen()
                     } label: {

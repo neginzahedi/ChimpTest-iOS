@@ -30,7 +30,6 @@ class GameManager: ObservableObject {
     @Published var isGameEnded: Bool
     @Published var sequencePerformed: Bool // true if user correctly performs the sequence
     @Published var numbersFlipped: Bool // flips all NumberViews if true
-    @Published var isShowingPopover: Bool
     
     var numberedPositions: Array<Pair<Int, Int>> // an array of all locations where there is a number
     var nextNumber: Int // the next number to be clicked by the user
@@ -43,7 +42,6 @@ class GameManager: ObservableObject {
         self.isGameEnded = false
         self.sequencePerformed = false
         self.numbersFlipped = false
-        self.isShowingPopover = false
         self.numberedPositions = []
         self.nextNumber = 1
     }
