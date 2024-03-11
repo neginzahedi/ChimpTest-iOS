@@ -17,26 +17,29 @@
 /// - Important: The matrix uses a zero-based indexing system.
 ///
 /// - Note: The matrix is initialized with a default value for all elements.
-class Matrix<T> {
+
+import SwiftUI
+
+class Matrix<T>: ObservableObject {
     /// An enumeration representing possible errors that can occur during matrix operations.
     ///
     /// - `outOfBounds`: The specified indices are outside the valid range of the matrix.
     enum MatrixError: Error {
         case outOfBounds
     }
-
+    
     /// The 2D array holding the elements of the matrix.
     private var array: Array<Array<T>>
-
+    
     /// The number of rows in the matrix.
     private(set) var rows: Int
-
+    
     /// The number of columns in the matrix.
     private(set) var cols: Int
-
+    
     /// The default value used for initializing and resetting elements in the matrix.
     var defaultValue: T
-
+    
     /// Creates a new matrix with the specified number of rows, columns, and default value.
     ///
     /// - Parameters:
@@ -49,7 +52,7 @@ class Matrix<T> {
         self.rows = rows
         self.cols = cols
     }
-
+    
     /// Updates the element at the specified indices with the given value.
     ///
     /// - Parameters:
@@ -59,37 +62,40 @@ class Matrix<T> {
     /// - Throws: `MatrixError.outOfBounds` if the indices are outside the valid range of the matrix.
     func update(_ i: Int, _ j: Int, value: T) throws {
         try check_dimensions(i, j)
+        self.objectWillChange.send()
         array[i][j] = value
     }
-
+    
     /// Checks whether the specified indices are within the valid range of the matrix.
     ///
     /// - Parameters:
     ///   - i: The row index.
     ///   - j: The column index.
     /// - Throws: `MatrixError.outOfBounds` if the indices are outside the valid range of the matrix.
-    func check_dimensions(_ i: Int, _ j: Int) throws {
+    private func check_dimensions(_ i: Int, _ j: Int) throws {
         guard i >= 0 && j >= 0 && i < rows && j < cols else {
             throw MatrixError.outOfBounds
         }
     }
-
+    
     /// Resizes the matrix to the specified number of rows and columns.
     ///
     /// - Parameters:
     ///   - rows: The new number of rows in the matrix.
     ///   - cols: The new number of columns in the matrix.
     func resize(rows: Int, cols: Int) {
-        array = Array(repeating: Array(repeating: defaultValue, count: rows), count: cols)
+        self.objectWillChange.send()
+        array = Array(repeating: Array(repeating: defaultValue, count: cols), count: rows)
         self.rows = rows
         self.cols = cols
     }
-
+    
     /// Clears all elements in the matrix, setting them to the default value.
     func clear() {
+        self.objectWillChange.send()
         array = Array(repeating: Array(repeating: defaultValue, count: cols), count: rows)
     }
-
+    
     /// Retrieves the element at the specified indices in the matrix.
     ///
     /// - Parameters:
@@ -99,14 +105,14 @@ class Matrix<T> {
     func at(_ i: Int, _ j: Int) -> T {
         array[i][j]
     }
-
+    
     /// Returns the dimensions of the matrix as a pair of integers.
     ///
     /// - Returns: A `Pair` representing the number of rows and columns in the matrix.
     func dimensions() -> Pair<Int, Int> {
         .init(rows, cols)
     }
-
+    
     /// Applies a closure to each element in the matrix.
     ///
     /// The closure receives the element value along with its row and column indices.

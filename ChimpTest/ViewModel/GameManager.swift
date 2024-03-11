@@ -66,7 +66,6 @@ class GameManager: ObservableObject {
             try! self.matrix.update(pos.first, pos.second, value: .init(number: counter, isVisible: true))
             counter += 1
         }
-        self.objectWillChange.send() // matrix class needs this, in order to trigger the view re-rendering
     }
     
     func onNumberTap(pos: Pair<Int, Int>){
@@ -83,7 +82,6 @@ class GameManager: ObservableObject {
     }
     
     private func onWrongNumberTap(pos: Pair<Int, Int>){
-        print("Expected: \(self.numberedPositions[self.nextNumber - 1].description) but tapped: \(pos.description)")
         self.lives -= 1
         if self.lives == 0 {
             self.isGameEnded = true
@@ -101,7 +99,6 @@ class GameManager: ObservableObject {
         if self.nextNumber > self.numberedPositions.capacity { // nextNumber starts from 1 (not 0 indexed), don't get confused
             self.onSequenceCompletion()
         }
-        self.objectWillChange.send()
     }
     
     private func onSequenceCompletion(){
