@@ -51,7 +51,7 @@ struct WelcomeScreen: View {
             .frame(maxWidth: .infinity)
             .environmentObject(game)
             .padding()
-            .background(Color(red: 251/255, green: 216/255, blue: 93/255))
+            .background(.bgYellow)
             .onAppear(){
                 animateText()
             }
