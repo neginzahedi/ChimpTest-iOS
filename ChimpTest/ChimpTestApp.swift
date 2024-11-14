@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct ChimpTestApp: App {
+    @StateObject var settings = SettingsViewModel.shared
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            WelcomeScreen()
+                .preferredColorScheme(settings.isDarkMode ? .dark : .light)
         }
     }
 }

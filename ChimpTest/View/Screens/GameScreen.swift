@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct GameScreen: View {
-    
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var game: GameManager;
     
+    @StateObject var game: GameManager = .init(config: ClassicMode())
     @State private var isShowingPopover: Bool = false;
     
     var body: some View {
@@ -48,6 +47,7 @@ struct GameScreen: View {
             .foregroundColor(.black)
             .background(Color(red: 251/255, green: 216/255, blue: 93/255))
             ChimpGrid()
+                .environmentObject(game)
                 .padding()
         }
         .navigationBarBackButtonHidden()
@@ -64,13 +64,6 @@ struct GameScreen: View {
                 Text("Start Over")
             }
         }, message: { Text("Your Score: \(game.sequencesCompleted)") })
-        
-        //        .alert("LEVEL PASSED", isPresented: $game.sequencePerformed, actions: {
-        //            Button("Next") {}
-        //        }, message: {
-        //            Text("Your Score: \(game.sequencesCompleted)")
-        //        })
-        
         .onAppear(){
             self.game.start()
         }
@@ -80,5 +73,4 @@ struct GameScreen: View {
 
 #Preview {
     GameScreen()
-        .environmentObject(GameManager())
 }

@@ -17,11 +17,11 @@ struct ChimpGrid: View {
             let height = geo.size.height
             let gap = 10.0 // gap between and around cells
             
-            let x_space = width - (Double((GameConfig.cols + 1)) * gap)
-            let x_max_square_size = x_space / Double(GameConfig.cols)
+            let x_space = width - (Double((game.config.cols + 1)) * gap)
+            let x_max_square_size = x_space / Double(game.config.cols)
             
-            let y_space = height - (Double((GameConfig.rows + 1)) * gap)
-            let y_max_square_size = y_space / Double(GameConfig.rows)
+            let y_space = height - (Double((game.config.rows + 1)) * gap)
+            let y_max_square_size = y_space / Double(game.config.rows)
             
             let cell_size = min(y_max_square_size, x_max_square_size)
 
@@ -45,6 +45,6 @@ struct ChimpGrid: View {
 
 #Preview {
     ChimpGrid()
-        .environmentObject(GameManager())
+        .environmentObject(GameManager(config: ClassicMode()))
 }
 

@@ -9,16 +9,40 @@ import Foundation
 import SwiftUI
 
 
-struct GameConfig {
+protocol GameConfig {
     /* -- WARNING --
      based on testing this works well on portrait mode on iPhones and iPads
      we could make it dynamic in the future
      */
-    static let rows = 8;
-    static let cols = 5;
-    static let initialLives = 3
-    static let initialSequences = 5
+    var rows: Int {get}
+    var cols: Int {get}
+    var initialLives: Int {get}
+    var initialSequences: Int {get}
 }
+
+
+// MARK: - Providing default values for rows, cols
+extension GameConfig {
+    var rows: Int {8}
+    var cols: Int {5}
+}
+
+struct ClassicMode: GameConfig {
+    var initialLives = 3
+    var initialSequences = 5
+}
+
+struct FlashMode: GameConfig {
+    var initialLives = 5
+    var initialSequences = 5
+    var visiblityDuration: Double = 3
+}
+
+struct MasterMode: GameConfig {
+    var initialLives = 1
+    var initialSequences = 15
+}
+
 
 class GameManager: ObservableObject {
     
@@ -33,11 +57,13 @@ class GameManager: ObservableObject {
     
     var numberedPositions: Array<Pair<Int, Int>> // an array of all locations where there is a number
     var nextNumber: Int // the next number to be clicked by the user
+    let config: GameConfig
     
     // MARK: - init
-    init(){
-        self.matrix = Matrix(rows: GameConfig.rows, cols: GameConfig.cols, defaultValue: Square(number: 1, isVisible: false))
-        self.lives = GameConfig.initialLives
+    init(config: GameConfig){
+        self.config = config
+        self.matrix = Matrix(rows: config.rows, cols: config.cols, defaultValue: Square(number: 1, isVisible: false))
+        self.lives = config.initialLives
         self.sequencesCompleted = 0
         self.isGameEnded = false
         self.sequencePerformed = false
@@ -84,7 +110,7 @@ class GameManager: ObservableObject {
         if self.lives == 0 {
             self.isGameEnded = true
         } else {
-            self.generateRandomGrid(qty: GameConfig.initialSequences + self.sequencesCompleted)
+            self.generateRandomGrid(qty: config.initialSequences + self.sequencesCompleted)
             self.numbersFlipped = false
         }
     }
@@ -102,15 +128,16 @@ class GameManager: ObservableObject {
     private func onSequenceCompletion(){
         self.sequencePerformed.toggle()
         self.sequencesCompleted += 1
-        self.generateRandomGrid(qty: GameConfig.initialSequences + self.sequencesCompleted)
+        self.generateRandomGrid(qty: config.initialSequences + self.sequencesCompleted)
         self.numbersFlipped = false
     }
     
     func start(){
-        self.lives = GameConfig.initialLives
+        self.lives = config.initialLives
         self.isGameEnded = false
         self.numbersFlipped = false
         self.sequencesCompleted = 0
-        self.generateRandomGrid(qty: GameConfig.initialSequences)
+        self.generateRandomGrid(qty: config.initialSequences)
     }
+    
 }
