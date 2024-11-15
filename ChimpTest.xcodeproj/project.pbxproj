@@ -15,7 +15,6 @@
 		0F512D6D2B69AA7400321C1E /* ChimpTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F512D6C2B69AA7400321C1E /* ChimpTestTests.swift */; };
 		0F512D772B69AA7400321C1E /* ChimpTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F512D762B69AA7400321C1E /* ChimpTestUITests.swift */; };
 		0F512D792B69AA7400321C1E /* ChimpTestUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F512D782B69AA7400321C1E /* ChimpTestUITestsLaunchTests.swift */; };
-		0F568C442B76EA6300922BCB /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F568C432B76EA6300922BCB /* Score.swift */; };
 		0F8A73142B828D06000949E8 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8A73132B828D06000949E8 /* WelcomeScreen.swift */; };
 		0FF34BEF2B8678C6005D843C /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF34BEE2B8678C6005D843C /* GameScreen.swift */; };
 		0FF633AF2B6C47F000195F3F /* Hearts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF633AE2B6C47F000195F3F /* Hearts.swift */; };
@@ -25,6 +24,8 @@
 		824632CA2B7006B300074065 /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824632C92B7006B300074065 /* LinkedList.swift */; };
 		824632CC2B7011A100074065 /* LinkedListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824632CB2B7011A100074065 /* LinkedListTests.swift */; };
 		824E92842CE7C01100DC1B0B /* FlashModeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824E92832CE7C01100DC1B0B /* FlashModeScreen.swift */; };
+		824E92862CE7C21D00DC1B0B /* ClassicScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824E92852CE7C21D00DC1B0B /* ClassicScore.swift */; };
+		8258B2852CE7E80D00707016 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8258B2842CE7E80D00707016 /* APIService.swift */; };
 		825976922CE65C6500F090BF /* GameModes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825976912CE65C6500F090BF /* GameModes.swift */; };
 		825A10312B711A6E00D1ADE9 /* ChimpGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825A10302B711A6E00D1ADE9 /* ChimpGrid.swift */; };
 		8267730F2B6C3A76004CB78A /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8267730E2B6C3A76004CB78A /* Matrix.swift */; };
@@ -64,7 +65,6 @@
 		0F512D722B69AA7400321C1E /* ChimpTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChimpTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F512D762B69AA7400321C1E /* ChimpTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChimpTestUITests.swift; sourceTree = "<group>"; };
 		0F512D782B69AA7400321C1E /* ChimpTestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChimpTestUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		0F568C432B76EA6300922BCB /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		0F8A73132B828D06000949E8 /* WelcomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
 		0FF34BEE2B8678C6005D843C /* GameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreen.swift; sourceTree = "<group>"; };
 		0FF633AE2B6C47F000195F3F /* Hearts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hearts.swift; sourceTree = "<group>"; };
@@ -74,6 +74,8 @@
 		824632C92B7006B300074065 /* LinkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedList.swift; sourceTree = "<group>"; };
 		824632CB2B7011A100074065 /* LinkedListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedListTests.swift; sourceTree = "<group>"; };
 		824E92832CE7C01100DC1B0B /* FlashModeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashModeScreen.swift; sourceTree = "<group>"; };
+		824E92852CE7C21D00DC1B0B /* ClassicScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicScore.swift; sourceTree = "<group>"; };
+		8258B2842CE7E80D00707016 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		825976912CE65C6500F090BF /* GameModes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModes.swift; sourceTree = "<group>"; };
 		825A10302B711A6E00D1ADE9 /* ChimpGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChimpGrid.swift; sourceTree = "<group>"; };
 		8267730E2B6C3A76004CB78A /* Matrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				0F512D5B2B69AA7300321C1E /* ChimpTestApp.swift */,
 				0F512D5F2B69AA7400321C1E /* Assets.xcassets */,
 				8242405A2B8FB4C2003BEC28 /* Localizable.strings */,
+				8258B2832CE7E80000707016 /* Networking */,
 				8259768E2CE630DE00F090BF /* DataStructures */,
 				8267730B2B6C37BB004CB78A /* Model */,
 				8267730C2B6C37C1004CB78A /* View */,
@@ -172,6 +175,14 @@
 			path = ChimpTestUITests;
 			sourceTree = "<group>";
 		};
+		8258B2832CE7E80000707016 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				8258B2842CE7E80D00707016 /* APIService.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		8259768E2CE630DE00F090BF /* DataStructures */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				8210A0592B7AA2B200B0B3DE /* Square.swift */,
+				824E92852CE7C21D00DC1B0B /* ClassicScore.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -223,7 +235,6 @@
 		82DBEE2E2B8D300200DE5689 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				0F568C432B76EA6300922BCB /* Score.swift */,
 				0FF633AE2B6C47F000195F3F /* Hearts.swift */,
 				BB8EC49C2CE500FE00DD6591 /* CGridView.swift */,
 				825A10302B711A6E00D1ADE9 /* ChimpGrid.swift */,
@@ -374,11 +385,12 @@
 				8267730F2B6C3A76004CB78A /* Matrix.swift in Sources */,
 				825976922CE65C6500F090BF /* GameModes.swift in Sources */,
 				0F8A73142B828D06000949E8 /* WelcomeScreen.swift in Sources */,
+				824E92862CE7C21D00DC1B0B /* ClassicScore.swift in Sources */,
 				824476782B6D4F2D00E14528 /* Pair.swift in Sources */,
 				BB8EC49D2CE500FE00DD6591 /* CGridView.swift in Sources */,
-				0F568C442B76EA6300922BCB /* Score.swift in Sources */,
 				0FF34BEF2B8678C6005D843C /* GameScreen.swift in Sources */,
 				829676D82B758509003A7A8D /* GameManager.swift in Sources */,
+				8258B2852CE7E80D00707016 /* APIService.swift in Sources */,
 				82DBEE302B8D32B000DE5689 /* NumberView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

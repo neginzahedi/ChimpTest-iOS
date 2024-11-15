@@ -31,7 +31,12 @@ struct NumberView: View {
 }
 
 #Preview {
-    NumberView(number: 10, isVisible: true , isFlipped: true, size: 150){
-        print("Clicked")
+    ZStack {
+        Color.bgYellow
+            .ignoresSafeArea()
+        HStack {
+            NumberView(number: 10, isVisible: true , isFlipped: false, size: 150){}
+            NumberView(number: 10, isVisible: true , isFlipped: true, size: 150){}
+        }
     }
 }
