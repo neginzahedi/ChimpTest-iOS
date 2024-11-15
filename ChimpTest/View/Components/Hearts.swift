@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Hearts: View {
     let livesLeft: Int
-    let maxLives: Int = 3
+    let maxLives: Int
     
     var body: some View {
         VStack(alignment: .center,spacing: 15){
@@ -26,10 +26,6 @@ struct Hearts: View {
     }
 }
 
-#if DEBUG
-import SwiftUI
-
 #Preview {
-    Hearts(livesLeft: 2)
+    Hearts(livesLeft: 3, maxLives: 5)
 }
-#endif

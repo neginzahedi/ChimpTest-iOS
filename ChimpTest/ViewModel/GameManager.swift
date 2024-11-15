@@ -9,61 +9,26 @@ import Foundation
 import SwiftUI
 
 
-protocol GameConfig {
-    /* -- WARNING --
-     based on testing this works well on portrait mode on iPhones and iPads
-     we could make it dynamic in the future
-     */
-    var rows: Int {get}
-    var cols: Int {get}
-    var initialLives: Int {get}
-    var initialSequences: Int {get}
-}
-
-
-// MARK: - Providing default values for rows, cols
-extension GameConfig {
-    var rows: Int {8}
-    var cols: Int {5}
-}
-
-struct ClassicMode: GameConfig {
-    var initialLives = 3
-    var initialSequences = 5
-}
-
-struct FlashMode: GameConfig {
-    var initialLives = 5
-    var initialSequences = 5
-    var visiblityDuration: Double = 3
-}
-
-struct MasterMode: GameConfig {
-    var initialLives = 1
-    var initialSequences = 15
-}
-
-
 class GameManager: ObservableObject {
-    
     // MARK: - Properties
     @Published var matrix: Matrix<Square>
-    
-    @Published var lives: Int // attempts left
+    @Published var livesLeft: Int // attempts left
     @Published var sequencesCompleted: Int // number of sequences correctly performed
     @Published var isGameEnded: Bool
     @Published var sequencePerformed: Bool // true if user correctly performs the sequence
     @Published var numbersFlipped: Bool // flips all NumberViews if true
     
+    
+    let config: GameConfig
     var numberedPositions: Array<Pair<Int, Int>> // an array of all locations where there is a number
     var nextNumber: Int // the next number to be clicked by the user
-    let config: GameConfig
+    
     
     // MARK: - init
     init(config: GameConfig){
         self.config = config
         self.matrix = Matrix(rows: config.rows, cols: config.cols, defaultValue: Square(number: 1, isVisible: false))
-        self.lives = config.initialLives
+        self.livesLeft = config.lives
         self.sequencesCompleted = 0
         self.isGameEnded = false
         self.sequencePerformed = false
@@ -71,6 +36,7 @@ class GameManager: ObservableObject {
         self.numberedPositions = []
         self.nextNumber = 1
     }
+
     
     func generateRandomGrid(qty: Int){
         self.matrix.clear()
@@ -106,8 +72,8 @@ class GameManager: ObservableObject {
     }
     
     private func onWrongNumberTap(pos: Pair<Int, Int>){
-        self.lives -= 1
-        if self.lives == 0 {
+        self.livesLeft -= 1
+        if self.livesLeft == 0 {
             self.isGameEnded = true
         } else {
             self.generateRandomGrid(qty: config.initialSequences + self.sequencesCompleted)
@@ -133,7 +99,7 @@ class GameManager: ObservableObject {
     }
     
     func start(){
-        self.lives = config.initialLives
+        self.livesLeft = config.lives
         self.isGameEnded = false
         self.numbersFlipped = false
         self.sequencesCompleted = 0

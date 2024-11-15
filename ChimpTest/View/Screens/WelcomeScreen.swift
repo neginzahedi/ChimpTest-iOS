@@ -7,13 +7,37 @@
 
 import SwiftUI
 
+
+struct PrimaryButton: View {
+    let text: String;
+    let action: () -> Void
+    
+    var body: some View {
+        Button {
+            action()
+        } label: {
+            Text(self.text)
+                .bold()
+                .font(.system(.title2, design: .monospaced))
+                .padding(.vertical, 10)
+                .frame(width: 270)
+                .foregroundColor(.white)
+                .background(.black)
+                .cornerRadius(10)
+        }
+    }
+}
+
 struct WelcomeScreen: View {
     @State private var instructionText: String = "";
-
+    @State private var path: Array<String> = []
+    
+    @State private var config: GameConfig?
+    
     let text: String = NSLocalizedString("welcomeScreenMessage", comment: "")
     
     var body: some View {
-        NavigationStack{
+        NavigationStack(path: $path){
             VStack(){
                 topHeader
                 
@@ -23,7 +47,34 @@ struct WelcomeScreen: View {
                 
                 Spacer()
                 
-                startButton
+                
+                PrimaryButton(text: "Classic Mode"){
+                    self.config = ClassicMode()
+                    path.append("GameScreen")
+                }
+                
+                PrimaryButton(text: "Flash Mode") {
+                    self.config = FlashMode()
+                    path.append("GameScreen")
+                }
+                
+                PrimaryButton(text: "Master Level"){
+                    self.config = MasterMode()
+                    path.append("GameScreen")
+                }
+                Spacer()
+            }
+            .navigationDestination(for: String.self) { selection in
+                // TODO: - Work here
+                switch selection {
+                    case "GameScreen":
+                        if let config {
+                            GameScreen(config: config)
+                        }
+                default:
+                    EmptyView()
+                }
+                
             }
             .foregroundColor(.black)
             .frame(maxWidth: .infinity)
@@ -69,23 +120,6 @@ struct WelcomeScreen: View {
 
 
     }
-    
-    private var startButton: some View {
-        NavigationLink {
-            GameScreen()
-        } label: {
-            Text("Start Test")
-                .bold()
-                .font(.system(.title2, design: .monospaced))
-                .padding(.horizontal, 50)
-                .padding(.vertical, 10)
-                .foregroundColor(.white)
-                .background(.black)
-                .cornerRadius(10)
-        }
-        .padding(.bottom, 50)
-    }
-    
     
     // MARK: - View's Methods
     func animateText() {
