@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct GameScreen: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.presentationMode) var presentationMode
@@ -19,7 +20,7 @@ struct GameScreen: View {
     }
     
     var body: some View {
-        VStack{
+        VStack(spacing: 0){
             HStack{
                 settingsButton
                 
@@ -34,7 +35,7 @@ struct GameScreen: View {
             .padding()
             .foregroundColor(.black)
             .background(Color(red: 251/255, green: 216/255, blue: 93/255))
-            
+
             ChimpGrid()
                 .environmentObject(game)
                 .padding()

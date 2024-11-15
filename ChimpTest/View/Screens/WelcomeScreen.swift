@@ -55,7 +55,7 @@ struct WelcomeScreen: View {
                 
                 PrimaryButton(text: "Flash Mode") {
                     self.config = FlashMode()
-                    path.append("GameScreen")
+                    path.append("FlashModeScreen")
                 }
                 
                 PrimaryButton(text: "Master Level"){
@@ -71,6 +71,8 @@ struct WelcomeScreen: View {
                         if let config {
                             GameScreen(config: config)
                         }
+                case "FlashModeScreen":
+                    FlashModeScreen()
                 default:
                     EmptyView()
                 }

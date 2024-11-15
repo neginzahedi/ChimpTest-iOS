@@ -36,6 +36,12 @@ struct FlashMode: GameConfig {
     var visiblityDuration: Double = 3
 }
 
+struct TimedMode: GameConfig {
+    var lives = 3
+    var initialSequences = 5
+    var duration: Double = 5 * 60 // 300 seconds -> 5 minutes
+}
+
 struct MasterMode: GameConfig {
     var lives = 1
     var initialSequences = 10
