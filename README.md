@@ -4,34 +4,15 @@
 
 ChimpTest is an iOS application built with Swift and SwiftUI.
 
+## Video (wait for gif to load) 
+<img src="./Images/chimp.gif" width="50%" height="50%"/>
 
-## Screenshots 
+## How to build
 
-<table>
-  <tr>
-    <td colspan="5"><strong>Light Mode</strong></td>
-  </tr>
-  <tr>
-    <td><img src="" alt="App Screenshot" width="200"></td>
-    <td><img src="" alt="App Screenshot" width="200"></td>
-    <td><img src="" alt="App Screenshot" width="200"></td>
-    <td><img src="" alt="App Screenshot" width="200"></td>
-    <td><img src="" alt="App Screenshot" width="200"></td>
-  </tr>
-  <tr>
-    <td colspan="5"><strong>Dark Mode</strong></td>
-  </tr>
-  <tr>
-    <td><img src="" alt="App Screenshot" width="200"></td>
-    <td><img src="" alt="App Screenshot" width="200"></td>
-    <td><img src="" alt="App Screenshot" width="200"></td>
-    <td><img src="" alt="App Screenshot" width="200"></td>
-    <td><img src="" alt="App Screenshot" width="200"></td>
-  </tr>
-</table>
+Clone the repository
+`$ git clone https://github.com/neginzahedi/ChimpTest-iOS.git`
 
+Open the project in Xcode
 
-
-<br>
-
-## Author
+`$ cd ChimpTest-iOS`
+`$ open ChimpTest.xcodeproj`
