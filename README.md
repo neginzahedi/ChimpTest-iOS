@@ -54,7 +54,8 @@ We welcome contributions from everyone! If you'd like to contribute to the proje
 
 # License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the [MIT License](https://github.com/neginzahedi/ChimpTest-iOS/blob/main/LICENSE) - see the LICENSE file for details.
 
-<br>
+--- 
+
 Have fun playing the Chimp Test Game, and let us know how you perform! 😊
